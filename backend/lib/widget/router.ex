@@ -28,14 +28,10 @@ defmodule Router.Index do
 
   match _ do
     res(conn, %{
-      error: %{
         code: 404,
         error: true,
-        message: "route invalid"
-      },
-      type: "query",
-      message: "Use: ?region={ asia | americas | europe }&gamename=annie&tagline=annie"
-    }, 200)
+        message: "invalid route"
+    }, 404)
   end
 
   def checkRegion?(region) do
