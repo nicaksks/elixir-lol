@@ -30,7 +30,7 @@ defmodule Router.Index do
     res(conn, %{
         code: 404,
         error: true,
-        message: "invalid route"
+        message: "invalid.route"
     }, 404)
   end
 
