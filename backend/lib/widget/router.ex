@@ -1,8 +1,8 @@
 defmodule Router.Index do
 
   use Widget.Helper.Common
-  alias League.Api, as: League
-  import Api.Json
+  import League.Api, only: [getInfo: 3]
+  import Api.Json, only: [res: 3]
 
   get "/" do
     region = conn.query_params["region"] || nil
@@ -17,7 +17,7 @@ defmodule Router.Index do
       res(conn, %{message: "invalid.region"}, 400)
     end
 
-    case League.getInfo(String.downcase(region), gameName, tagLine) do
+    case getInfo(String.downcase(region), gameName, tagLine) do
       {:ok, data, _} ->
         res(conn, %{data: data}, 200)
       {:error, data} ->
